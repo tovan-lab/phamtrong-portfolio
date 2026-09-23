@@ -584,7 +584,8 @@
     .stats-bar {
       position: relative;
       z-index: 10;
-      margin-top: 0;
+      /* Khoảng cách chính xác 1.5cm (~57px) với thanh Ribbon phía trên */
+      margin-top: 1.5cm;
       margin-bottom: 0;
     }
 
@@ -1530,7 +1531,7 @@
         align-items: center;
         text-align: center;
         gap: 0;
-        padding-bottom: 70px;
+        padding-bottom: 0;
       }
 
       .hero-content {
@@ -1550,8 +1551,16 @@
         margin-bottom: 20px;
       }
 
-      .hero-cta {
+      .hero-desc {
         order: 3;
+        font-size: 0.92rem;
+        line-height: 1.7;
+        margin: 0 auto 20px;
+        max-width: 440px;
+      }
+
+      .hero-cta {
+        order: 4;
         display: flex;
         justify-content: center;
         gap: 12px;
@@ -1560,10 +1569,10 @@
       }
 
       .hero-image-wrap {
-        order: 4;
+        order: 5;
         width: 240px;
         height: 285px;
-        margin: 0 auto 20px;
+        margin: 0 auto 0;
       }
 
       .hero-avatar-main {
@@ -1588,14 +1597,6 @@
       }
 
       .chevron-left, .chevron-right { display: none; }
-
-      .hero-desc {
-        order: 5;
-        font-size: 0.92rem;
-        line-height: 1.7;
-        margin: 0 auto 28px;
-        max-width: 440px;
-      }
 
       /* Quy trình hoạt động popup trên mobile: bỏ mũi tên, đánh số từ 1 */
       .modal-pipeline-steps {
@@ -1641,7 +1642,7 @@
       }
 
       /* Stats */
-      .stats-bar { margin-top: 0; }
+      .stats-bar { margin-top: 1.5cm; }
       .stats-inner { grid-template-columns: 1fr; }
       .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
       .stat-item:last-child { border-bottom: none; }

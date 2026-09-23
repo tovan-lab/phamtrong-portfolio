@@ -5,11 +5,11 @@
 .tech-marquee-section {
   width: 100%;
   position: relative;
-  z-index: 15;
-  /* Dời đường ri băng sát mép dưới ngay chỗ giới hạn màu cam nền avatar */
-  margin-top: -6px;
-  /* Khoảng cách đều với ô bên dưới (Stats Bar) chính xác 1cm (~38px) */
-  margin-bottom: 1cm;
+  z-index: 20;
+  /* Kéo thanh Ribbon đè đúng vào vệt cắt ngang dưới cùng của ảnh nhân vật (Hero Section) */
+  margin-top: -50px;
+  /* Reset margin-bottom về 0 trước khi set khoảng cách mới để đảm bảo độ chuẩn xác */
+  margin-bottom: 0;
 }
 
 .tech-marquee-wrapper {
@@ -137,8 +137,8 @@
 ============================================================ */
 @media (max-width: 768px) {
   .tech-marquee-section {
-    margin-top: 6px;
-    margin-bottom: 1cm;
+    margin-top: -30px;
+    margin-bottom: 0;
   }
 
   .tech-marquee-wrapper {
