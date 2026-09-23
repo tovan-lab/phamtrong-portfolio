@@ -6,41 +6,40 @@
   const splash = document.getElementById('intro-splash');
   if (!splash) return;
 
-  // Lock scrolling while splash is active
+  // Khóa cuộn trang khi Intro đang chạy
   document.body.style.overflow = 'hidden';
 
-  function dismissIntro() {
-    if (splash.dataset.dismissed) return;
-    splash.dataset.dismissed = 'true';
-    splash.style.transition = 'transform 0.7s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.5s ease';
-    splash.style.transform = 'translateY(-100%)';
-    splash.style.opacity = '0.98';
-
-    setTimeout(() => {
-      splash.style.display = 'none';
-      document.body.style.overflow = '';
-    }, 750);
+  function removeIntro() {
+    if (splash.dataset.removed) return;
+    splash.dataset.removed = 'true';
+    splash.remove();
+    document.body.style.overflow = '';
   }
 
-  // Automatic cleanup after CSS animation completes (around 5.4s)
-  setTimeout(() => {
-    dismissIntro();
-  }, 5450);
+  // Khớp chính xác với timeline: 3.8s bắt đầu fade-out (0.5s) -> 4.3s gỡ bỏ hoàn toàn khỏi DOM
+  const introTimeout = setTimeout(() => {
+    removeIntro();
+  }, 4300);
 
-  // Allow skipping on click or pressing Escape / Space / Enter
+  // Cho phép người dùng click hoặc bấm phím để bỏ qua nhanh nếu muốn
+  splash.addEventListener('click', () => {
+    clearTimeout(introTimeout);
+    removeIntro();
+  });
+
   const skipBtn = splash.querySelector('.intro-skip-btn');
   if (skipBtn) {
     skipBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      dismissIntro();
+      clearTimeout(introTimeout);
+      removeIntro();
     });
   }
 
-  splash.addEventListener('click', dismissIntro);
-
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' || e.key === ' ' || e.key === 'Enter') {
-      dismissIntro();
+      clearTimeout(introTimeout);
+      removeIntro();
     }
   });
 })();
