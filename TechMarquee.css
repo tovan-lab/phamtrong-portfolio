@@ -1,0 +1,153 @@
+/* ============================================================
+   TECH & FINANCIAL INDICATORS MARQUEE STYLES
+============================================================ */
+
+.tech-marquee-section {
+  width: 100%;
+  position: relative;
+  z-index: 15;
+  margin-top: 10px;
+  margin-bottom: 84px;
+}
+
+.tech-marquee-wrapper {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background: #0b0d12;
+  border-top: 1px solid rgba(248, 111, 3, 0.2);
+  border-bottom: 1px solid rgba(248, 111, 3, 0.2);
+  padding: 20px 0;
+  overflow: hidden;
+  user-select: none;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+/* Pause marquee scroll on hover */
+.tech-marquee-wrapper:hover .tech-marquee-track {
+  animation-play-state: paused;
+}
+
+/* Continuous smooth scroll to left */
+.tech-marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  will-change: transform;
+  animation: tech-marquee-scroll 40s linear infinite;
+}
+
+@keyframes tech-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.tech-marquee-group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Individual Marquee Item */
+.tech-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #9ca3af;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.25s ease;
+  white-space: nowrap;
+}
+
+.tech-marquee-item:hover {
+  color: #f97316;
+  transform: scale(1.1);
+}
+
+.tech-marquee-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 26px;
+  width: 26px;
+  height: 26px;
+  transition: color 0.25s ease, filter 0.25s ease;
+}
+
+.tech-marquee-item:hover .tech-marquee-icon {
+  color: #f97316;
+  filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.55));
+}
+
+.tech-marquee-label {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: color 0.25s ease;
+}
+
+/* Star Separator */
+.tech-marquee-separator {
+  color: rgba(248, 111, 3, 0.4);
+  font-size: 11px;
+  margin: 0 24px;
+  flex-shrink: 0;
+  display: inline-block;
+  user-select: none;
+}
+
+/* ============================================================
+   RESPONSIVE (MOBILE)
+============================================================ */
+@media (max-width: 768px) {
+  .tech-marquee-section {
+    margin-top: 0;
+    margin-bottom: 68px;
+  }
+
+  .tech-marquee-wrapper {
+    padding: 16px 0;
+  }
+
+  .tech-marquee-item {
+    gap: 8px;
+  }
+
+  .tech-marquee-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .tech-marquee-icon svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .tech-marquee-label {
+    font-size: 13px;
+  }
+
+  .tech-marquee-separator {
+    margin: 0 16px;
+    font-size: 9px;
+  }
+}
+
+/* ============================================================
+   ACCESSIBILITY: PREFERS REDUCED MOTION
+============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .tech-marquee-track {
+    animation: none !important;
+  }
+}
