@@ -103,7 +103,7 @@ export default function TechMarquee() {
                   data-type={item.type}
                 >
                   <span className="tech-marquee-icon">
-                    <item.Icon size={26} />
+                    <item.Icon size={20} />
                   </span>
                   <span className="tech-marquee-label">{item.label}</span>
                 </div>
@@ -122,7 +122,7 @@ export default function TechMarquee() {
                   data-type={item.type}
                 >
                   <span className="tech-marquee-icon">
-                    <item.Icon size={26} />
+                    <item.Icon size={20} />
                   </span>
                   <span className="tech-marquee-label">{item.label}</span>
                 </div>

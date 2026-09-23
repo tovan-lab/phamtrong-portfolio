@@ -1,13 +1,14 @@
 /* ============================================================
-   TECH & FINANCIAL INDICATORS MARQUEE STYLES
+   TECH & FINANCIAL INDICATORS MARQUEE STYLES (TUNED)
 ============================================================ */
 
 .tech-marquee-section {
   width: 100%;
   position: relative;
   z-index: 15;
-  margin-top: 10px;
-  margin-bottom: 84px;
+  /* Khoảng cách cách đều trên và dưới khoảng 2cm (~74px) */
+  margin-top: 50px;
+  margin-bottom: 130px; /* Bù trừ với margin-top: -56px của stats-bar -> khoảng cách thực tế là ~74px */
 }
 
 .tech-marquee-wrapper {
@@ -17,35 +18,37 @@
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  background: #0b0d12;
-  border-top: 1px solid rgba(248, 111, 3, 0.2);
-  border-bottom: 1px solid rgba(248, 111, 3, 0.2);
-  padding: 20px 0;
+  background: #08090d;
+  /* Viền trên dưới mảnh và mờ lại 1 tí */
+  border-top: 1px solid rgba(248, 111, 3, 0.12);
+  border-bottom: 1px solid rgba(248, 111, 3, 0.12);
+  /* Thu nhỏ đường ri băng gọn gàng thanh mảnh hơn */
+  padding: 11px 0;
   overflow: hidden;
   user-select: none;
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
   mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
 }
 
-/* Pause marquee scroll on hover */
+/* Tạm dừng chạy khi rê chuột vào dải */
 .tech-marquee-wrapper:hover .tech-marquee-track {
   animation-play-state: paused;
 }
 
-/* Continuous smooth scroll to left */
+/* Chạy liên tục sang trái với tốc độ chậm đều */
 .tech-marquee-track {
   display: flex;
   align-items: center;
   width: max-content;
   will-change: transform;
-  animation: tech-marquee-scroll 40s linear infinite;
+  animation: tech-marquee-scroll 55s linear infinite;
 }
 
 @keyframes tech-marquee-scroll {
-  from {
+  0% {
     transform: translateX(0);
   }
-  to {
+  100% {
     transform: translateX(-50%);
   }
 }
@@ -56,20 +59,16 @@
   flex-shrink: 0;
 }
 
-/* Individual Marquee Item */
+/* Trạng thái mặc định: thu nhỏ lại một chút và mờ lại 1 tí */
 .tech-marquee-item {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  color: #9ca3af;
+  gap: 8px;
+  color: #8b95a5;
+  opacity: 0.5;
   cursor: pointer;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.25s ease;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease, color 0.25s ease;
   white-space: nowrap;
-}
-
-.tech-marquee-item:hover {
-  color: #f97316;
-  transform: scale(1.1);
 }
 
 .tech-marquee-icon {
@@ -77,32 +76,44 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  font-size: 26px;
-  width: 26px;
-  height: 26px;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
   transition: color 0.25s ease, filter 0.25s ease;
 }
 
-.tech-marquee-item:hover .tech-marquee-icon {
-  color: #f97316;
-  filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.55));
-}
-
 .tech-marquee-label {
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
   transition: color 0.25s ease;
 }
 
-/* Star Separator */
+/* Dấu sao ngăn cách mờ nhẹ đồng bộ Hero */
 .tech-marquee-separator {
-  color: rgba(248, 111, 3, 0.4);
-  font-size: 11px;
-  margin: 0 24px;
+  color: rgba(248, 111, 3, 0.22);
+  font-size: 8px;
+  margin: 0 20px;
   flex-shrink: 0;
   display: inline-block;
   user-select: none;
+}
+
+/* Khi rê chuột vào: sáng bừng lên như bình thường */
+.tech-marquee-item:hover {
+  opacity: 1 !important;
+  color: #f97316 !important;
+  transform: scale(1.12);
+}
+
+.tech-marquee-item:hover .tech-marquee-icon {
+  color: #f97316 !important;
+  filter: drop-shadow(0 0 10px rgba(249, 115, 22, 0.75));
+}
+
+.tech-marquee-item:hover .tech-marquee-label {
+  color: #ffffff !important;
+  font-weight: 600;
 }
 
 /* ============================================================
@@ -110,36 +121,36 @@
 ============================================================ */
 @media (max-width: 768px) {
   .tech-marquee-section {
-    margin-top: 0;
-    margin-bottom: 68px;
+    margin-top: 25px;
+    margin-bottom: 95px;
   }
 
   .tech-marquee-wrapper {
-    padding: 16px 0;
+    padding: 8px 0;
   }
 
   .tech-marquee-item {
-    gap: 8px;
+    gap: 6px;
   }
 
   .tech-marquee-icon {
-    font-size: 20px;
-    width: 20px;
-    height: 20px;
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
   }
 
   .tech-marquee-icon svg {
-    width: 20px !important;
-    height: 20px !important;
+    width: 16px !important;
+    height: 16px !important;
   }
 
   .tech-marquee-label {
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .tech-marquee-separator {
-    margin: 0 16px;
-    font-size: 9px;
+    margin: 0 12px;
+    font-size: 7px;
   }
 }
 

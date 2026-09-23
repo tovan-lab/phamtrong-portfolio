@@ -280,8 +280,9 @@
        HERO SECTION
     ============================================= */
     #hero {
-      min-height: 100vh;
-      padding-top: var(--nav-height);
+      min-height: auto;
+      padding-top: calc(var(--nav-height) + 36px);
+      padding-bottom: 24px;
       display: flex;
       align-items: center;
       position: relative;
@@ -318,7 +319,7 @@
       gap: 60px;
       position: relative;
       z-index: 1;
-      padding-bottom: 80px; /* room for stats overlap */
+      padding-bottom: 20px;
     }
 
     /* Hero content left */
