@@ -16,6 +16,7 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
   <link rel="stylesheet" href="./TechMarquee.css" />
   <link rel="stylesheet" href="./intro.css" />
+  <link rel="stylesheet" href="./space-background.css" />
 
   <style>
     /* =============================================
@@ -42,15 +43,16 @@
       margin: 0; padding: 0; box-sizing: border-box;
     }
 
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html { scroll-behavior: smooth; font-size: 16px; background: #000000; }
 
     body {
       font-family: 'Outfit', sans-serif;
-      background: var(--bg-main);
+      background: transparent;
       color: var(--text-white);
       line-height: 1.6;
       overflow-x: hidden;
     }
+
 
     /* Scrollbar */
     ::-webkit-scrollbar { width: 5px; }
@@ -1631,6 +1633,15 @@
     </div>
   </aside>
 
+  <!-- ============================================================
+       SPACE THEME BACKGROUND (FIXED POSITION & PARALLAX STARS)
+  ============================================================ -->
+  <div class="space-background" aria-hidden="true">
+    <div class="space-nebula"></div>
+    <div class="space-stars-sm"></div>
+    <div class="space-stars-md"></div>
+    <div class="space-stars-lg"></div>
+  </div>
 
   <!-- ============================================================
        NAVBAR
