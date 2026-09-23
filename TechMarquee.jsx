@@ -137,7 +137,7 @@ export default function TechMarquee() {
 }
 
 // Auto-mount if tech-marquee-root container is found on page
-if (typeof document !== 'undefined') {
+function mountMarquee() {
   const mountPoint = document.getElementById('tech-marquee-root');
   if (mountPoint && !mountPoint.dataset.mounted) {
     mountPoint.dataset.mounted = 'true';
@@ -145,3 +145,12 @@ if (typeof document !== 'undefined') {
     root.render(<TechMarquee />);
   }
 }
+
+if (typeof document !== 'undefined') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', mountMarquee);
+  } else {
+    mountMarquee();
+  }
+}
+

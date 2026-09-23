@@ -6,9 +6,10 @@
   width: 100%;
   position: relative;
   z-index: 15;
-  /* Khoảng cách cách đều trên và dưới khoảng 2cm (~74px) */
-  margin-top: 50px;
-  margin-bottom: 130px; /* Bù trừ với margin-top: -56px của stats-bar -> khoảng cách thực tế là ~74px */
+  /* Dời đường ri băng sát mép dưới ngay chỗ giới hạn màu cam nền avatar */
+  margin-top: -6px;
+  /* Khoảng cách đều với ô bên dưới (Stats Bar) chính xác 1cm (~38px) */
+  margin-bottom: 1cm;
 }
 
 .tech-marquee-wrapper {
@@ -19,11 +20,11 @@
   margin-left: -50vw;
   margin-right: -50vw;
   background: #08090d;
-  /* Viền trên dưới mảnh và mờ lại 1 tí */
-  border-top: 1px solid rgba(248, 111, 3, 0.12);
-  border-bottom: 1px solid rgba(248, 111, 3, 0.12);
-  /* Thu nhỏ đường ri băng gọn gàng thanh mảnh hơn */
-  padding: 11px 0;
+  /* Viền trên dưới mảnh và mờ nhẹ đồng bộ với hero */
+  border-top: 1px solid rgba(248, 111, 3, 0.15);
+  border-bottom: 1px solid rgba(248, 111, 3, 0.15);
+  /* Thu nhỏ đường ri băng gọn gàng thanh mảnh */
+  padding: 10px 0;
   overflow: hidden;
   user-select: none;
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
@@ -32,6 +33,7 @@
 
 /* Tạm dừng chạy khi rê chuột vào dải */
 .tech-marquee-wrapper:hover .tech-marquee-track {
+  -webkit-animation-play-state: paused;
   animation-play-state: paused;
 }
 
@@ -41,15 +43,29 @@
   align-items: center;
   width: max-content;
   will-change: transform;
-  animation: tech-marquee-scroll 55s linear infinite;
+  -webkit-animation: tech-marquee-scroll 50s linear infinite !important;
+  animation: tech-marquee-scroll 50s linear infinite !important;
+}
+
+@-webkit-keyframes tech-marquee-scroll {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
 @keyframes tech-marquee-scroll {
   0% {
-    transform: translateX(0);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translateX(-50%);
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
@@ -65,7 +81,7 @@
   align-items: center;
   gap: 8px;
   color: #8b95a5;
-  opacity: 0.5;
+  opacity: 0.45;
   cursor: pointer;
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease, color 0.25s ease;
   white-space: nowrap;
@@ -76,9 +92,9 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  font-size: 20px;
-  width: 20px;
-  height: 20px;
+  font-size: 19px;
+  width: 19px;
+  height: 19px;
   transition: color 0.25s ease, filter 0.25s ease;
 }
 
@@ -93,7 +109,7 @@
 .tech-marquee-separator {
   color: rgba(248, 111, 3, 0.22);
   font-size: 8px;
-  margin: 0 20px;
+  margin: 0 18px;
   flex-shrink: 0;
   display: inline-block;
   user-select: none;
@@ -121,8 +137,8 @@
 ============================================================ */
 @media (max-width: 768px) {
   .tech-marquee-section {
-    margin-top: 25px;
-    margin-bottom: 95px;
+    margin-top: 6px;
+    margin-bottom: 1cm;
   }
 
   .tech-marquee-wrapper {
@@ -151,14 +167,5 @@
   .tech-marquee-separator {
     margin: 0 12px;
     font-size: 7px;
-  }
-}
-
-/* ============================================================
-   ACCESSIBILITY: PREFERS REDUCED MOTION
-============================================================ */
-@media (prefers-reduced-motion: reduce) {
-  .tech-marquee-track {
-    animation: none !important;
   }
 }
