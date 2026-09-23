@@ -1,0 +1,205 @@
+/* ============================================================
+   INTRO SPLASH SCREEN STYLES
+============================================================ */
+
+#intro-splash {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000000;
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  user-select: none;
+  will-change: transform, opacity;
+  animation: introSplashDismiss 0.85s cubic-bezier(0.77, 0, 0.175, 1) 4.6s forwards;
+}
+
+/* Subtle glowing background ambient aura */
+.intro-glow-bg {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(248, 111, 3, 0.14) 0%, rgba(248, 111, 3, 0.03) 50%, transparent 70%);
+  filter: blur(65px);
+  pointer-events: none;
+}
+
+/* Center stage container */
+.intro-stage {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+/* Common style for each logo item */
+.intro-logo-item {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-logo-item svg {
+  display: block;
+}
+
+.intro-logo-item span {
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+/* Logo 1: Python (0.0s - 1.0s) */
+.intro-logo-python {
+  animation: introLogoStep 1s cubic-bezier(0.4, 0, 0.2, 1) 0s forwards;
+}
+.intro-logo-python svg {
+  filter: drop-shadow(0 0 35px rgba(55, 118, 171, 0.55));
+}
+.intro-logo-python span {
+  color: #3776AB;
+}
+
+/* Logo 2: Node.js (1.0s - 2.0s) */
+.intro-logo-node {
+  animation: introLogoStep 1s cubic-bezier(0.4, 0, 0.2, 1) 1s forwards;
+}
+.intro-logo-node svg {
+  filter: drop-shadow(0 0 35px rgba(95, 160, 78, 0.6));
+}
+.intro-logo-node span {
+  color: #5FA04E;
+}
+
+/* Logo 3: HTML5 (2.0s - 3.0s) */
+.intro-logo-html {
+  animation: introLogoStep 1s cubic-bezier(0.4, 0, 0.2, 1) 2s forwards;
+}
+.intro-logo-html svg {
+  filter: drop-shadow(0 0 35px rgba(227, 79, 38, 0.6));
+}
+.intro-logo-html span {
+  color: #E34F26;
+}
+
+/* Keyframe for each logo: scale in -> hold -> scale & fade out */
+@keyframes introLogoStep {
+  0% {
+    opacity: 0;
+    transform: scale(0.82) translateY(8px);
+    visibility: visible;
+  }
+  25%, 72% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    visibility: visible;
+  }
+  98%, 100% {
+    opacity: 0;
+    transform: scale(1.1) translateY(-6px);
+    visibility: hidden;
+  }
+}
+
+/* Text group: PHAM TRONG / Financial Systems Engineer (3.0s - 4.5s) */
+.intro-text-group {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  animation: introTextFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 3s forwards;
+}
+
+.intro-name {
+  font-size: clamp(2.4rem, 6.5vw, 4.4rem);
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  line-height: 1.1;
+  text-shadow: 0 0 35px rgba(255, 255, 255, 0.35), 0 4px 15px rgba(0, 0, 0, 0.8);
+}
+
+.intro-subtitle {
+  font-size: clamp(0.95rem, 2.4vw, 1.4rem);
+  font-weight: 700;
+  color: #F86F03;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  margin-top: 12px;
+  text-shadow: 0 0 25px rgba(248, 111, 3, 0.65);
+}
+
+@keyframes introTextFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.94);
+    visibility: visible;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    visibility: visible;
+  }
+}
+
+/* Whole splash dismiss (slide up smoothly to reveal portfolio) */
+@keyframes introSplashDismiss {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0.98;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+/* Skip prompt in top right */
+.intro-skip-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.82rem;
+  letter-spacing: 1px;
+  padding: 6px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.intro-skip-btn:hover {
+  color: #ffffff;
+  border-color: #F86F03;
+  background: rgba(248, 111, 3, 0.2);
+  transform: translateY(-1px);
+}
