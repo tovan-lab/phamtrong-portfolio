@@ -493,8 +493,13 @@
       }
     }
 
-    /* Main Character Cutout - Pure Drop Shadow (NO box-shadow, NO mask-image) */
+    /* Main Character Cutout - Drop Shadow + bottom fade mask.
+       Sharp 100% from top down to --avatar-fade-start, then fades to fully
+       transparent at the bottom edge. Tune to 70% / 80% / 90% as needed. */
     .hero-avatar-main {
+      --avatar-fade-start: 80%;
+      -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 var(--avatar-fade-start), transparent 100%);
+      mask-image: linear-gradient(to bottom, #000 0%, #000 var(--avatar-fade-start), transparent 100%);
       position: relative;
       width: 430px;
       height: auto;
