@@ -6,8 +6,10 @@
   width: 100%;
   position: relative;
   z-index: 20;
-  /* Kéo thanh Ribbon đè đúng vào vệt cắt ngang dưới cùng của ảnh nhân vật (Hero Section) */
-  margin-top: -50px;
+  /* Ribbon dính sát mép dưới ảnh nhân vật: bỏ padding-top của rule chung `section`
+     (96px desktop / 64px mobile) vốn tạo ra khoảng hở, không dùng margin âm */
+  margin-top: 0;
+  padding-top: 0;
   /* Reset margin-bottom về 0 trước khi set khoảng cách mới để đảm bảo độ chuẩn xác */
   margin-bottom: 0;
 }
@@ -137,7 +139,7 @@
 ============================================================ */
 @media (max-width: 768px) {
   .tech-marquee-section {
-    margin-top: -30px;
+    margin-top: 0;
     margin-bottom: 0;
   }
 
