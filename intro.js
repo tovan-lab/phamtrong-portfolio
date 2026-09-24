@@ -27,15 +27,6 @@
     removeIntro();
   });
 
-  const skipBtn = splash.querySelector('.intro-skip-btn');
-  if (skipBtn) {
-    skipBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      clearTimeout(introTimeout);
-      removeIntro();
-    });
-  }
-
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' || e.key === ' ' || e.key === 'Enter') {
       clearTimeout(introTimeout);

@@ -206,27 +206,3 @@
     pointer-events: none;
   }
 }
-
-/* Nút bỏ qua nhanh góc trên */
-.intro-skip-btn {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  color: rgba(255, 255, 255, 0.45);
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-  padding: 6px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.05);
-  cursor: pointer;
-  transition: all 0.25s ease;
-  backdrop-filter: blur(10px);
-  z-index: 10;
-}
-
-.intro-skip-btn:hover {
-  color: #ffffff;
-  border-color: #F86F03;
-  background: rgba(248, 111, 3, 0.15);
-}
